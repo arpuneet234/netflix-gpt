@@ -1,11 +1,7 @@
-import "./App.css";
+import Body from "./components/Body";
 
 function App() {
-  return (
-    <h1 className="bg-slate-500 font-extrabold text-center">
-      Example Code Using Tailwind
-    </h1>
-  );
+  return <Body />;
 }
 
 export default App;
