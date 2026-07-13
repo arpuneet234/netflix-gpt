@@ -4,7 +4,6 @@ import MainContainer from "./MainContainer.js";
 import SecondaryContainer from "./SecondaryContainer.js";
 
 const Browse = () => {
-  console.log("Hook value:", useNowPlayingMovies);
   useNowPlayingMovies();
   return (
     <>

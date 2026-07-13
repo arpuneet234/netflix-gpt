@@ -22,8 +22,6 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   };
   const handleButtonClicked = () => {
-    console.log(email.current.value);
-    console.log(password.current.value);
     const message = checkValidDate(email.current.value, password.current.value);
     if (message) return;
     if (!isSignInForm) {
@@ -36,7 +34,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
+
           updateProfile(auth.currentUser, {
             displayName: name.current.value,
             photoURL: "https://example.com/jane-q-user/profile.jpg",
@@ -67,7 +65,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+
           navigate("/browse");
         })
         .catch((error) => {
