@@ -4,11 +4,18 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
+import { toggleGptSearchView } from "../utils/gptSlice";
 
 const Header = () => {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const gptSearch = useSelector((store) => store.gpt.showGptSearch);
+  console.log(gptSearch);
+
+  const handleGptSearchClick = () => {
+    dispatch(toggleGptSearchView());
+  };
 
   const handleSignOut = () => {
     signOut(auth)
@@ -42,6 +49,12 @@ const Header = () => {
       />
       {user && (
         <div>
+          <button
+            className="px-4 py-2 m-2 mx-4 bg-purple-800 rounded-lg text-white cursor-pointer "
+            onClick={handleGptSearchClick}
+          >
+            {gptSearch ? "Home" : "GPT Search"}
+          </button>
           <button
             onClick={handleSignOut}
             className="font-bold text-white text-lg"
